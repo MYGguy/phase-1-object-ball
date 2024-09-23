@@ -12,6 +12,7 @@ function goodPractices() {
     for (let teamKey in teamObj) {
       // are you ABSOLUTELY SURE what 'teamKey' is?
       // use debugger to find out!
+      console.log(teamKey);
       debugger
 
       // what is 'data' at each loop through out this block?
