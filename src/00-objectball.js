@@ -118,32 +118,62 @@ function gameObject() {
 }
 
 function numPointsScored(player) {
-    // return gameObject()['away']['players'][player]['points'];
     const game = gameObject();
-    for (let key in game) {
-        // debugger;
-        let homeOrAway = key[game];
-        for (let key in homeOrAway) {
-            // debugger;
-            let teamObj = key[homeOrAway];
-            // debugger;
-            console.log(key);
-            return teamObj;
+    for (let team in game) {
+        if (game[team].players[player]) {
+            return game[team].players[player].points;
         }
-        // console.log(teamObj);
-        return teamObj;
     }
-    console.log(teamObj);
+    return null;
 }
+// console.log(numPointsScored('Reggie Evans'));
+// console.log(numPointsScored('Ben Gordon'));
 
-console.log(numPointsScored())
+function shoeSize(player) {
+    const game = gameObject();
+    for (let team in game) {
+        if (game[team].players[player]) {
+            console.log(game[team].players[player].shoe);
+            return game[team].players[player].shoe;
+        }
+    }
+}
+// shoeSize('Ben Gordon')
 
-// console.log(gameObject());
+function teamColors(teamDes) {
+    const game = gameObject();
+    for (let team in game) {
+        if (game[team].teamName === teamDes) {
+            return game[team].colors
+        }
+    }
+    return null;
+}
+// console.log(teamColors('Brooklyn Nets'));
+// console.log(teamColors('Charlotte Hornets'));
 
-// function homeTeamName() {
-//     // let object = gameObject();
-//     // return object['home']['teamName'];
-//     return gameObject()['home']['teamName']
-// }
+function teamNames() {
+    let teamNameList = [];
+    for (let team in gameObject()) {
+        teamNameList.push(gameObject()[team].teamName);
+    }
+    return teamNameList;
+}
+// console.log(teamNames());
 
-// console.log(homeTeamName());
+function playerNumbers(theTeam) {
+    const game = gameObject();
+    let numbers = [];
+
+    for (let team in game) {
+        if (game[team].teamName === theTeam) {
+            numbers.push(game[team].players);
+        }
+        return numbers;
+    }
+    return null;
+}
+console.log(playerNumbers('Brooklyn Nets'));
+console.log(playerNumbers('Charlotte Hornets'));
+
+
